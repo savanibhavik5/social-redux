@@ -4,6 +4,7 @@ import { commentData } from "../Services/Actions/Action";
 import { useEffect, useState } from "react";
 import Comment from "../Pages/Comment";
 import { useDispatch, useSelector } from "react-redux";
+import { setPostWithComment } from "../Services/Actions/Action";
 
 const Post = ({
   createdBy,
@@ -16,7 +17,7 @@ const Post = ({
   likes,
 }) => {
   const comments = useSelector((state) => state?.CommentReducer?.state);
-  console.log(comments);
+  // console.log(comments);
   const dispatch = useDispatch();
   useEffect(() => {
     axios?.get("http://localhost:1234/comments")?.then((res) => {
@@ -24,6 +25,7 @@ const Post = ({
     });
   }, []);
 
+  console.log(setPostWithComment(comments));
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">
       <div className="d-flex justify-content-between p-2">

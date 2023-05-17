@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Post from "../Pages/Post";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { postData } from "../Services/Actions/Action";
+import { postData, setPostWithComment } from "../Services/Actions/Action";
 
 const PostComponent = () => {
   let dispatch = useDispatch();
@@ -14,8 +14,8 @@ const PostComponent = () => {
     });
   }, []);
 
+
   return posts?.map((post) => {
-  
     return (
       <Post
         key={post?.id}
