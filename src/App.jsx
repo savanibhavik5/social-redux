@@ -7,8 +7,16 @@ import ReelsComponent from "./Component/ReelsComponent";
 import PostComponent from "./Component/PostComponent";
 import Video from "./Pages/Video";
 import VideoComponent from "./Component/VideoComponent";
+import { useEffect } from "react";
+import { postData } from "./Services/Actions/Action";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(postData())
+},[])
+
   return (
     <BrowserRouter className="container">
       <TopNavBar />
@@ -19,9 +27,9 @@ function App() {
         <div className="col-md-6">
           {/* <ReelsComponent /> */}
           <NewPost />
-          {/* <PostComponent /> */}
+          <PostComponent />
           {/* <Video /> */}
-          <VideoComponent />
+          {/* <VideoComponent /> */}
         </div>
         <div className="col-md-3 me-2"></div>
       </div>

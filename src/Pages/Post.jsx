@@ -1,6 +1,8 @@
 import React from "react";
+
 import { useEffect, useState } from "react";
 import Comment from "../Pages/Comment";
+import { useDispatch } from "react-redux";
 const Post = ({
   createdBy,
   detail,
@@ -12,7 +14,7 @@ const Post = ({
   likes,
 }) => {
   let [comments, setComments] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     fetch("http://localhost:1234/comments")
       .then((res) => res.json())
