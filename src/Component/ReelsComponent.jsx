@@ -8,7 +8,7 @@ const ReelsComponent = () => {
       .then((res) => res.json())
       .then((serRes) => {
         setReels(serRes);
-        console.log(serRes);
+    
       });
   }, []);
   return (

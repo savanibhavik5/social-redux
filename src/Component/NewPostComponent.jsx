@@ -12,20 +12,20 @@ const NewPostComponent = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // / ------> Store multiple Image  <-----
-  const handleImage = (event) => {
-    const files = event.target.files;
-    const newImages = [];
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      reader.readAsDataURL(files[i]);
-      reader.onload = () => {
-        newImages.push(reader.result);
-        if (newImages?.length === files?.length) {
-          setImages([...image, ...newImages]);
-        }
-      };
-    }
-  };
+  // const handleImage = (event) => {
+  //   const files = event.target.files;
+  //   const newImages = [];
+  //   for (let i = 0; i < files.length; i++) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(files[i]);
+  //     reader.onload = () => {
+  //       newImages.push(reader.result);
+  //       if (newImages?.length === files?.length) {
+  //         setImages([...image, ...newImages]);
+  //       }
+  //     };
+  //   }
+  // };
   // ------> Store Single Image  <-----
   //   const handleImage = (event) => {
   //     let files = event.target.files[0];

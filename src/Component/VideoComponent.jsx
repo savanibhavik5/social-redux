@@ -9,9 +9,9 @@ const VideoComponent = () => {
       .then((res) => res.json())
       .then((data) => {
         setVideoes(data);
-        // console.log(data);
-      });
+          });
   }, []);
+  
   return videoes.map((video) => {
     return (
       <Video

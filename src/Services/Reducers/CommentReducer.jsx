@@ -1,9 +1,10 @@
-const commentReducer = (state = [], action) => {
+const CommentReducer = (state = [], action) => {
   if (action.type === "ALL_COMMENTS") {
-    console.log(action.payload);
     return {
       state: action.payload,
     };
   }
   return state;
 };
+
+export default CommentReducer;

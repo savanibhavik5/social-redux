@@ -1,6 +1,10 @@
 import { createStore } from "redux";
 
-import MainReducer from "../Services/Reducers/MainReducer";
+import RootReducer from "../Services/Reducers/RootReducer";
 
-const MyStore = createStore(MainReducer);
-export default MyStore;
+const Store = createStore(
+  RootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default Store;

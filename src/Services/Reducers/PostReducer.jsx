@@ -1,13 +1,11 @@
-
 const PostReducer = (state = [], action) => {
   if (action.type === "ALL_POST") {
-    // console.log(action.payload)
+   
     return {
-      state: action.payload
-    }
+      state: action.payload,
+    };
   }
-    return state
-  
+  return state;
 };
 
 export default PostReducer;

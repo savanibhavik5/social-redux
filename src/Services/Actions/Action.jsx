@@ -5,6 +5,7 @@ export const postData = (data) => {
   };
 };
 export const commentData = (data) => {
+
   return {
     type: "ALL_COMMENTS",
     payload: data,

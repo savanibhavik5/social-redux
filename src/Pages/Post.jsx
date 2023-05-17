@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { commentData } from "../Services/Actions/Action";
-
 import { useEffect, useState } from "react";
 import Comment from "../Pages/Comment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 const Post = ({
   createdBy,
   detail,
@@ -15,12 +15,12 @@ const Post = ({
   user_id,
   likes,
 }) => {
-  let [comments, setComments] = useState([]);
+  const comments = useSelector((state) => state?.CommentReducer?.state);
+  console.log(comments);
   const dispatch = useDispatch();
   useEffect(() => {
     axios?.get("http://localhost:1234/comments")?.then((res) => {
       dispatch(commentData(res?.data));
-      // console.log(res.data);
     });
   }, []);
 
@@ -64,8 +64,8 @@ const Post = ({
           <h6 className="pt-2 ps-2 ">Comment</h6>
         </button>
       </div>
-      {comments
-        .filter((comment) => comment.post_id === id)
+      {/* {comments
+        // .filter((comment) => comment.post_id === id)
         .map((comment) => {
           return (
             <Comment
@@ -80,7 +80,7 @@ const Post = ({
               // edit_comment={() => handleEdit(comment)}
             />
           );
-        })}
+        })} */}
       <div className="d-flex w-100 p-3">
         <img
           src={localStorage.getItem("userdp")}
