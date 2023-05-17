@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import { commentData } from "../Services/Actions/Action";
 
 import { useEffect, useState } from "react";
 import Comment from "../Pages/Comment";
@@ -16,11 +18,10 @@ const Post = ({
   let [comments, setComments] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://localhost:1234/comments")
-      .then((res) => res.json())
-      .then((serRes) => {
-        setComments(serRes);
-      });
+    axios?.get("http://localhost:1234/comments")?.then((res) => {
+      dispatch(commentData(res?.data));
+      // console.log(res.data);
+    });
   }, []);
 
   return (

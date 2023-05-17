@@ -13,9 +13,6 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(postData())
-},[])
 
   return (
     <BrowserRouter className="container">

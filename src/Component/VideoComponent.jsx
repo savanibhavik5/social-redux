@@ -5,7 +5,7 @@ const VideoComponent = () => {
   let [videoes, setVideoes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:1234/video")
+    fetch("http://localhost:3000/video")
       .then((res) => res.json())
       .then((data) => {
         setVideoes(data);
