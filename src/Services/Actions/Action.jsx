@@ -4,14 +4,12 @@ export const postData = (data) => {
     payload: data,
   };
 };
-
 export const commentData = (data) => {
   return {
     type: "ALL_COMMENTS",
     payload: data,
   };
 };
-
 export const setPostWithComment = (post_id, comments) => {
   // console.log("123", comments);
   return {
