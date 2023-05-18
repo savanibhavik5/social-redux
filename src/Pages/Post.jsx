@@ -4,19 +4,10 @@ import { commentData } from "../Services/Actions/Action";
 import Comment from "../Pages/Comment";
 import { useDispatch, useSelector } from "react-redux";
 
-const Post = ({ post }) => {
-  const {
-    createdBy,
-    detail,
-    created_at,
-    image,
-    userdp,
-    id,
-    user_id,
-    likes,
-    comments,
-  } = post;
-
+const Post = ({ post, comments }) => {
+  const { createdBy, detail, created_at, image, userdp, id, user_id, likes } =
+    post;
+  const { post_id, comment_by, comment_dp, comment_text } = comments;
 
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">

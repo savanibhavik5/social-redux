@@ -24,12 +24,12 @@ const PostComponent = () => {
       dispatch(commentData(res?.data));
     });
   }, []);
-  console.log(
-    comments?.map((comment) => 
-       // comment?.id,
-        comment?.post_id
-         )
-  );
+  // console.log(
+  //   comments?.map((comment) => 
+  //      // comment?.id,
+  //       comment?.post_id
+  //        )
+  // );
   return posts?.map((post) => {
     return (
       <Post
