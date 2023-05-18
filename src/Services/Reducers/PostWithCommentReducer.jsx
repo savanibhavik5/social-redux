@@ -16,7 +16,7 @@ const PostWithCommentReducer = (state = initialState, action) => {
           ...newPosts[postIndex],
           comments,
         };
-        console.log(newPosts);
+        // console.log(newPosts);
 
         return {
           ...state,

@@ -1,31 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { commentData } from "../Services/Actions/Action";
-import { useEffect, useState } from "react";
 import Comment from "../Pages/Comment";
 import { useDispatch, useSelector } from "react-redux";
-import { setPostWithComment } from "../Services/Actions/Action";
 
-const Post = ({
-  createdBy,
-  detail,
-  created_at,
-  image,
-  userdp,
-  id,
-  user_id,
-  likes,
-}) => {
-  const comments = useSelector((state) => state?.CommentReducer?.state);
-  // console.log(comments);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    axios?.get("http://localhost:1234/comments")?.then((res) => {
-      dispatch(commentData(res?.data));
-    });
-  }, []);
+const Post = ({ post }) => {
+  const {
+    createdBy,
+    detail,
+    created_at,
+    image,
+    userdp,
+    id,
+    user_id,
+    likes,
+    comments,
+  } = post;
+  console.log(
+    comments?.map((comment) => 
+      
+    
+        // comment?.id,
+        comment?.post_id
+     
+    )
+  );
 
-  console.log(setPostWithComment(comments));
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">
       <div className="d-flex justify-content-between p-2">
@@ -66,23 +66,22 @@ const Post = ({
           <h6 className="pt-2 ps-2 ">Comment</h6>
         </button>
       </div>
-      {/* {comments
-        // .filter((comment) => comment.post_id === id)
-        .map((comment) => {
-          return (
-            <Comment
-              key={comment?.id}
-              id={comment?.id}
-              post_id={comment?.id}
-              comment_text={comment?.comment_text}
-              comment_by={comment?.comment_by}
-              comment_dp={comment?.comment_dp}
-              comment_length={comment?.comment_length}
-              // del_comment={delcomment.bind(this, comment?.id)}
-              // edit_comment={() => handleEdit(comment)}
-            />
-          );
-        })} */}
+      {/* .filter((comment) => comment.post_id === id) */}
+      {comments?.map((val) => {
+        return (
+          <Comment
+            key={val?.id}
+            id={val?.id}
+            post_id={val?.post_id}
+            comment_text={val?.comment_text}
+            comment_by={val?.comment_by}
+            comment_dp={val?.comment_dp}
+            comment_length={val?.comment_length}
+            // del_comment={delcomment.bind(this, comment?.id)}
+            // edit_comment={() => handleEdit(comment)}
+          />
+        );
+      })}
       <div className="d-flex w-100 p-3">
         <img
           src={localStorage.getItem("userdp")}

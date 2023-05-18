@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { commentData } from "../Services/Actions/Action";
+import { useDispatch } from "react-redux";
 
-const Comment = ({ comment_text, comment_dp,comment_by, }) => {
+const Comment = ({ comment_text, comment_dp, comment_by, post_id }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(commentData(post_id));
+  }, []);
   return (
     <div className="">
       <div className="d-flex m-2">
