@@ -4,10 +4,18 @@ import { commentData } from "../Services/Actions/Action";
 import Comment from "../Pages/Comment";
 import { useDispatch, useSelector } from "react-redux";
 
-const Post = ({ post, comments }) => {
-  const { createdBy, detail, created_at, image, userdp, id, user_id, likes } =
-    post;
-  //
+const Post = ({ posts }) => {
+  const {
+    createdBy,
+    detail,
+    created_at,
+    image,
+    userdp,
+    id,
+    user_id,
+    likes,
+    comments,
+  } = posts;
 
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">
@@ -49,25 +57,23 @@ const Post = ({ post, comments }) => {
           <h6 className="pt-2 ps-2 ">Comment</h6>
         </button>
       </div>
-      {/* .filter((comment) => comment.post_id === id) */}
-      console.log(comments)
-      {comments?.map((val) => {
-        const { post_id, comment_by, comment_dp, comment_text } = val;
-        console.log(val);
+
+      {comments?.map((data) => {
         return (
           <Comment
-            key={val?.id}
-            id={val?.id}
-            post_id={val?.post_id}
-            comment_text={val?.comment_text}
-            comment_by={val?.comment_by}
-            comment_dp={val?.comment_dp}
-            comment_length={val?.comment_length}
-            // del_comment={delcomment.bind(this, comment?.id)}
-            // edit_comment={() => handleEdit(comment)}
+            key={id}
+            id={data?.id}
+            post_id={data?.post_id}
+            comment_text={data?.comment_text}
+            comment_by={data?.comment_by}
+            comment_dp={data?.comment_dp}
+            comment_length={data.length}
+            // del_comment={delcomment.bind(this, id)}
+            // edit_comment={() => handleEdit(data)}
           />
         );
       })}
+
       <div className="d-flex w-100 p-3">
         <img
           src={localStorage.getItem("userdp")}
