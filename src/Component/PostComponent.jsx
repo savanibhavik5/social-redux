@@ -24,20 +24,25 @@ const PostComponent = () => {
       dispatch(commentData(res?.data));
     });
   }, []);
-
+  console.log(
+    comments?.map((comment) => 
+       // comment?.id,
+        comment?.post_id
+         )
+  );
   return posts?.map((post) => {
     return (
       <Post
         key={post?.id}
-        post={post}
-        createdBy={post?.createdBy}
-        detail={post?.detail}
-        created_at={post?.created_at}
-        image={post?.image}
-        userdp={post?.userdp}
-        id={post?.id}
-        user_id={post?.user_id}
-        likes={post?.likes}
+        post={posts}
+        // createdBy={post?.createdBy}
+        // detail={post?.detail}
+        // created_at={post?.created_at}
+        // image={post?.image}
+        // userdp={post?.userdp}
+        // id={post?.id}
+        // user_id={post?.user_id}
+        // likes={post?.likes}
         comments={comments}
       />
     );

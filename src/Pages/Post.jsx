@@ -16,15 +16,7 @@ const Post = ({ post }) => {
     likes,
     comments,
   } = post;
-  console.log(
-    comments?.map((comment) => 
-      
-    
-        // comment?.id,
-        comment?.post_id
-     
-    )
-  );
+
 
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">
