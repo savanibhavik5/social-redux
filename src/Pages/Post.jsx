@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Post = ({ post, comments }) => {
   const { createdBy, detail, created_at, image, userdp, id, user_id, likes } =
     post;
-  const { post_id, comment_by, comment_dp, comment_text } = comments;
+  //
 
   return (
     <div className="rounded row rounded-3 shadow mt-3 p-2 ">
@@ -50,7 +50,10 @@ const Post = ({ post, comments }) => {
         </button>
       </div>
       {/* .filter((comment) => comment.post_id === id) */}
+      console.log(comments)
       {comments?.map((val) => {
+        const { post_id, comment_by, comment_dp, comment_text } = val;
+        console.log(val);
         return (
           <Comment
             key={val?.id}
