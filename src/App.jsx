@@ -8,11 +8,15 @@ import PostComponent from "./Component/PostComponent";
 import Video from "./Pages/Video";
 import VideoComponent from "./Component/VideoComponent";
 import { useEffect } from "react";
-import { postData } from "./Services/Actions/Action";
+import { commentData, postData } from "./Services/Actions/Action";
 import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(commentData());
+    dispatch(postData());
+  }, []);
 
   return (
     <BrowserRouter className="container">

@@ -6,10 +6,19 @@ import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
 import store from "./Store/Store";
+import LoginApp from "./Login/LoginApp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+if (localStorage.getItem("firstname") === null) {
+  root.render(
+    <Provider store={store}>
+      <LoginApp />
+    </Provider>
+  );
+} else {
+  root.render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+}

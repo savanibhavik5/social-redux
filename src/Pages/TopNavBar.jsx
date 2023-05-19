@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TopNavBar = () => {
+  const logOut = () => {
+    localStorage.clear();
+    window.location.reload();
+    window.location.href = "/login";
+  };
   return (
     <div className="container-fluid">
       <div className="row text-white nav-position bg-primary">
@@ -29,7 +34,7 @@ const TopNavBar = () => {
         </div>
         <div className="col-md-3">
           <div className="h-100 d-flex align-items-center justify-content-end">
-            <h5> name-logout </h5>
+            <h5 onClick={logOut}>{localStorage.getItem("firstname")}-logout</h5>
           </div>
         </div>
       </div>

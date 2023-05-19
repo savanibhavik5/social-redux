@@ -1,15 +1,26 @@
 import axios from "axios";
 export const postData = (data) => {
-  return {
-    type: "ALL_POST",
-    payload: data,
+  return (dispatch) => {
+    {
+      axios.get("http://localhost:1234/posts").then((res) => {
+        dispatch({
+          type: "ALL_POST",
+          payload: res?.data,
+        });
+      });
+    }
   };
 };
 
-export const commentData = (data) => {
-  return {
-    type: "ALL_COMMENTS",
-    payload: data,
+export const commentData = () => {
+  return (dispatch) => {
+    axios.get(`http://localhost:1234/comments`).then((res) => {
+      // console.log(res?.data);
+      dispatch({
+        type: "ALL_COMMENTS",
+        payload: res.data,
+      });
+    });
   };
 };
 

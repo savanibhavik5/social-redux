@@ -1,14 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { commentData } from "../Services/Actions/Action";
-import { useDispatch } from "react-redux";
 
-const Comment = ({ comment_text, comment_dp, comment_by, post_id }) => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(commentData(post_id));
-  // }, []);
-  console.log(post_id);
+const Comment = ({
+  comment_text,
+  comment_dp,
+  comment_by,
+  post_id,
+  del_comment,
+  edit_comment,
+  commentid,
+  currentId,
+}) => {
+  // let [show,setShow]=useState(false)
+
   return (
     <div className="">
       <div className="d-flex m-2">
@@ -25,10 +29,28 @@ const Comment = ({ comment_text, comment_dp, comment_by, post_id }) => {
           <div className="text-break">{comment_text}</div>
           <div className="d-flex ">
             <Link className="text-decoration-none text-primary mx-1 p-1 d-flex  text-end">
-              Edit
+              {edit_comment ? (
+                <button
+                  // disabled={comment == ""}
+                  className="btn p-0"
+                  // onClick={handleSubmit}
+                >
+                  Update Comment
+                </button>
+              ) : (
+                <button
+                  // disabled={comment == ""}
+                  className="btn p-0"
+                  // onClick={handleSubmit}
+                >
+                  Edit
+                </button>
+              )}
             </Link>
             <Link className="text-decoration-none text-danger p-1 mx-1 d-flex outline-non text-end">
-              Delete
+              <button className="btn p-0" onClick={del_comment}>
+                Delete
+              </button>
             </Link>
           </div>
         </div>
