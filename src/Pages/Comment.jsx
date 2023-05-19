@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { commentData } from "../Services/Actions/Action";
+import { useDispatch } from "react-redux";
 
 const Comment = ({
   comment_text,
@@ -19,12 +21,16 @@ const Comment = ({
     setComment(comment_text);
     setMute(!mute);
   };
-
+  const dispatch = useDispatch();
   const save_comment = () => {
     setMute(!mute);
-    axios.patch(`http://localhost:1234/comments/${commentid}`, {
-      comment_text: comment,
-    });
+    axios
+      .patch(`http://localhost:1234/comments/${commentid}`, {
+        comment_text: comment,
+      })
+      .then((response) => {
+        dispatch(commentData());
+      });
   };
 
   return (
@@ -51,17 +57,14 @@ const Comment = ({
             <div>{comment_text}</div>
           )}
 
-          <div className="d-flex  align-items-center">
+          <div className="d-flex  align-items-start">
             <Link className="text-decoration-none  ">
               {mute === true ? (
-                <button className="btn p-0" onClick={edit_comment}>
+                <button className="btn p-0" onClick={save_comment}>
                   Save Comment
                 </button>
               ) : (
-                <button
-                  className="btn"
-                  onClick={save_comment.bind(this, commentid)}
-                >
+                <button className="btn" onClick={edit_comment}>
                   Edit
                 </button>
               )}
