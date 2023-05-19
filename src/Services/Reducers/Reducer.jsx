@@ -7,8 +7,6 @@ export const PostReducer = (state = [], action) => {
   return state;
 };
 
-export default PostReducer;
-
 export const CommentReducer = (state = [], action) => {
   if (action.type === "ALL_COMMENTS") {
     return {

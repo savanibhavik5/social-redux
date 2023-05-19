@@ -80,7 +80,7 @@ const Post = ({ posts, comments }) => {
     });
   };
 
-  const handleEdit = (id) => {};
+  const editCommentHandle = (id) => {};
   const filterComment = comments.filter((com) => com?.post_id === postid);
 
   return (
@@ -147,8 +147,7 @@ const Post = ({ posts, comments }) => {
               comment_by={data?.comment_by}
               comment_dp={data?.comment_dp}
               del_comment={delcomment.bind(this, data?.id)}
-              // edit_comment={""}
-              // () => handleEdit(data)
+              edit_comment={() => editCommentHandle(data)}
             />
           );
         })}

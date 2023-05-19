@@ -11,8 +11,7 @@ const Comment = ({
   commentid,
   currentId,
 }) => {
-  // let [show,setShow]=useState(false)
-
+  let [comment, setComment] = useState("");
   return (
     <div className="">
       <div className="d-flex m-2">
@@ -31,11 +30,11 @@ const Comment = ({
             <Link className="text-decoration-none text-primary mx-1 p-1 d-flex  text-end">
               {edit_comment ? (
                 <button
-                  // disabled={comment == ""}
+                  disabled={comment == ""}
                   className="btn p-0"
                   // onClick={handleSubmit}
                 >
-                  Update Comment
+                  Edit
                 </button>
               ) : (
                 <button
@@ -43,7 +42,7 @@ const Comment = ({
                   className="btn p-0"
                   // onClick={handleSubmit}
                 >
-                  Edit
+                  Save Comment
                 </button>
               )}
             </Link>
