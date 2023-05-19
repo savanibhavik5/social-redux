@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Comment = ({
   comment_text,
@@ -7,11 +8,24 @@ const Comment = ({
   comment_by,
   post_id,
   del_comment,
-  edit_comment,
+  // edit_comment,
   commentid,
   currentId,
 }) => {
   let [comment, setComment] = useState("");
+  const [mute, setMute] = useState(false);
+
+  const edit_comment = () => {
+    setComment(comment_text);
+  };
+
+  const save_comment = () => {
+    setMute(true);
+    axios.patch(`http://localhost:1234/comments/${commentid}`, {
+      comment_text: setComment(),
+    });
+  };
+
   return (
     <div className="">
       <div className="d-flex m-2">
@@ -25,24 +39,32 @@ const Comment = ({
         <div className="px-2">{comment_by}:-</div>
 
         <div className="d-inline-flex justify-content-between w-100 ">
-          <div className="text-break">{comment_text}</div>
-          <div className="d-flex ">
-            <Link className="text-decoration-none text-primary mx-1 p-1 d-flex  text-end">
-              {edit_comment ? (
+          {mute === true ? (
+            <textarea
+              type="text"
+              className="form-control w-50"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+          ) : (
+            <div className="text-break">{comment_text}</div>
+          )}
+
+          <div className="d-flex  align-items-center">
+            <Link className="text-decoration-none  ">
+              {mute === true ? (
                 <button
-                  disabled={comment == ""}
                   className="btn p-0"
-                  // onClick={handleSubmit}
+                  onClick={edit_comment.bind(this, comment)}
                 >
-                  Edit
+                  Save Comment
                 </button>
               ) : (
                 <button
-                  // disabled={comment == ""}
-                  className="btn p-0"
-                  // onClick={handleSubmit}
+                  className="btn"
+                  onClick={save_comment.bind(this, commentid)}
                 >
-                  Save Comment
+                  Edit
                 </button>
               )}
             </Link>
