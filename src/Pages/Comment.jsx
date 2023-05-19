@@ -17,12 +17,13 @@ const Comment = ({
 
   const edit_comment = () => {
     setComment(comment_text);
+    setMute(!mute);
   };
 
   const save_comment = () => {
-    setMute(true);
+    setMute(!mute);
     axios.patch(`http://localhost:1234/comments/${commentid}`, {
-      comment_text: setComment(),
+      comment_text: comment,
     });
   };
 
@@ -47,16 +48,13 @@ const Comment = ({
               onChange={(e) => setComment(e.target.value)}
             />
           ) : (
-            <div className="text-break">{comment_text}</div>
+            <div>{comment_text}</div>
           )}
 
           <div className="d-flex  align-items-center">
             <Link className="text-decoration-none  ">
               {mute === true ? (
-                <button
-                  className="btn p-0"
-                  onClick={edit_comment.bind(this, comment)}
-                >
+                <button className="btn p-0" onClick={edit_comment}>
                   Save Comment
                 </button>
               ) : (
