@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 const ReelsComponent = () => {
   let [reels, setReels] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/reels")
+    fetch("http://localhost:1234/reels")
       .then((res) => res.json())
       .then((serRes) => {
         setReels(serRes);

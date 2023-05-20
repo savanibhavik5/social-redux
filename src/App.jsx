@@ -1,15 +1,17 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopNavBar from "./Pages/TopNavBar";
-import { BrowserRouter } from "react-router-dom";
 import NewPost from "./Component/NewPostComponent";
+import { useEffect } from "react";
 import LeftNavComponent from "./Component/LeftNavComponent";
 import ReelsComponent from "./Component/ReelsComponent";
 import PostComponent from "./Component/PostComponent";
 import Video from "./Pages/Video";
+import RightNav from "./Pages/RightNav";
 import VideoComponent from "./Component/VideoComponent";
-import { useEffect } from "react";
 import { commentData, postData } from "./Services/Actions/Action";
 import { useDispatch } from "react-redux";
+import Setting from "./Pages/Setting";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,18 +23,22 @@ function App() {
   return (
     <BrowserRouter className="container">
       <TopNavBar />
+
       <div className="row mt-3 p-0">
         <div className="col-md-3 ">
           <LeftNavComponent />
         </div>
         <div className="col-md-6">
-          {/* <ReelsComponent /> */}
-          <NewPost />
-          <PostComponent />
-          {/* <Video /> */}
-          {/* <VideoComponent /> */}
+          <Routes>
+            <Route exact path="/" element={<PostComponent />} />
+            <Route exact path="/reel" element={<ReelsComponent />} />
+            <Route exact path="/video" element={<VideoComponent />} />
+            <Route exact path="/setting" element={<Setting />} />
+          </Routes>
         </div>
-        <div className="col-md-3 me-2"></div>
+        <div className="col-md-3">
+          <RightNav />
+        </div>
       </div>
     </BrowserRouter>
   );

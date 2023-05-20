@@ -35,3 +35,12 @@ ul {
   width: 30%;
   height: fit-content;
 }
+Link {
+  text-decoration: none;
+  color: white !important;
+}
+.acitve_status{
+  position: absolute !important;
+  margin-left:-15px;
+  margin-top:20px
+}

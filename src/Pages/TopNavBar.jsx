@@ -1,5 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
+// import TopNavBar from "../Pages/TopNavBar";
+import NewPost from "../Component/NewPostComponent";
+import LeftNavComponent from "../Component/LeftNavComponent";
+import ReelsComponent from "../Component/ReelsComponent";
+import PostComponent from "../Component/PostComponent";
+import Video from "../Pages/Video";
+import RightNav from "../Pages/RightNav";
+import VideoComponent from "../Component/VideoComponent";
 
 const TopNavBar = () => {
   const logOut = () => {
@@ -16,19 +24,26 @@ const TopNavBar = () => {
         <div className="col-md-6 ">
           <ul className="d-flex h-100 justify-content-around align-items-center ">
             <li>
-              <i className="fa fa-home text-white"></i>
+              <Link to="/">
+                <i className="fa fa-home text-white"></i>
+              </Link>
             </li>
+
             <li>
-              <i className="fa-solid fa-film"></i>
+              <Link to="/video">
+                <i className="fa-solid fa-film text-white"></i>
+              </Link>
             </li>
+
+            {/* <li>
+              <Link to="/user">
+                <i className="fa fa-user text-white"></i>
+              </Link>
+            </li> */}
             <li>
-              <i className="fa-solid fa-video"></i>
-            </li>
-            <li>
-              <i className="fa fa-user "></i>
-            </li>
-            <li>
-              <i className="fa-solid fa-gears"></i>
+              <Link to="/setting">
+                <i className="fa-solid fa-gears text-white"></i>
+              </Link>
             </li>
           </ul>
         </div>

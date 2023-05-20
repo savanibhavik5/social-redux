@@ -10,7 +10,7 @@ const Comment = ({
   comment_by,
   post_id,
   del_comment,
-  // edit_comment,
+
   commentid,
   currentId,
 }) => {
@@ -28,54 +28,55 @@ const Comment = ({
       .patch(`http://localhost:1234/comments/${commentid}`, {
         comment_text: comment,
       })
-      .then((response) => {
+      .then((res) => {
         dispatch(commentData());
       });
   };
 
   return (
-    <div className="">
-      <div className="d-flex m-2">
-        <img
-          src={comment_dp}
-          alt="image not found"
-          width="20px"
-          height="20px"
-          className="rounded-circle m-1"
-        />
-        <div className="px-2">{comment_by}:-</div>
+    <div className="d-flex m-2 judtify-content-center align-items-center">
+      <img
+        src={comment_dp}
+        alt="image not found"
+        width="20px"
+        height="20px"
+        className="rounded-circle m-1"
+      />
+      <div className="">{comment_by}:-</div>
 
-        <div className="d-inline-flex justify-content-between w-100 ">
-          {mute === true ? (
+      <div className="d-inline-flex justify-content-between align-items-center w-100 ">
+        {mute === true ? (
+          <div className="d-flex w-100 justify-content-between align-items-center">
             <textarea
               type="text"
               className="form-control w-50"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-          ) : (
-            <div>{comment_text}</div>
-          )}
-
-          <div className="d-flex  align-items-start">
-            <Link className="text-decoration-none  ">
-              {mute === true ? (
-                <button className="btn p-0" onClick={save_comment}>
-                  Save Comment
-                </button>
-              ) : (
-                <button className="btn" onClick={edit_comment}>
-                  Edit
-                </button>
-              )}
-            </Link>
-            <Link className="text-decoration-none text-danger p-1 mx-1 d-flex outline-non text-end">
-              <button className="btn p-0" onClick={del_comment}>
+            <div className="text-decoration-none text-danger mx-1 d-flex outline-non text-end">
+              <button className="btn " onClick={save_comment}>
+                Save
+              </button>
+              <button className="btn " onClick={del_comment}>
                 Delete
               </button>
-            </Link>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="d-flex w-100 justify-content-between align-items-center">
+            <div className="">{comment_text}</div>
+            <div className="text-decoration-none text-danger mx-1 d-flex outline-non text-end">
+              <button className="btn align-items-start" onClick={edit_comment}>
+                Edit
+              </button>
+              <button className="btn " onClick={del_comment}>
+                Delete
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="d-flex  align-items-start"></div>
       </div>
     </div>
   );
