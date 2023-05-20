@@ -122,9 +122,9 @@ const Post = ({ posts, comments }) => {
             onClick={likeHandle.bind(this, postid, likes)}
           >
             {!liked ? (
-              <i className="fa-solid fa-thumbs-up "></i>
-            ) : (
               <i className="fa-solid fa-thumbs-up text-primary "></i>
+            ) : (
+              <i className="fa-solid fa-thumbs-up "></i>
             )}
 
             <h6 className="pt-2 ps-2">{likes?.length}</h6>
